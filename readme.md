@@ -44,3 +44,50 @@ App Installed & Running
 LB → MIG → App
   ↓
 Cloud SQL
+
+
+
+
+
+
+
+
+
+
+
+
+
+✅ OPTION 1 — Manually Run SQL (Easiest, Best for Learning)
+Step 1: Connect to Cloud SQL
+
+From Cloud Shell or your local machine:
+
+gcloud sql connect login-db --user=postgres
+
+
+(Replace login-db with your Cloud SQL instance name.)
+
+Step 2: Run the SQL Commands
+
+Once you see the SQL prompt:
+
+-- Create database
+CREATE DATABASE appdb;
+
+-- Switch to the database
+\c appdb;
+
+-- Create users table
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(100) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL
+);
+
+-- Insert initial user
+INSERT INTO users (username, password)
+VALUES ('admin', 'admin123');
+
+
+That’s it.
+Your database is now ready for login.
